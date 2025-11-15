@@ -63,32 +63,26 @@ RUN mkdir -p /models \
     /app/ComfyUI/models/loras \
     /app/ComfyUI/models/text_encoders
 
-# Download Qwen-Image models
+# Download Qwen-Image models (combined in single RUN to reduce layers)
 WORKDIR /models
-
-# Download base model (large file ~10GB)
-RUN echo "Downloading Qwen base model..." && \
-    wget --progress=bar:force:noscroll --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 5 \
+RUN echo "Downloading all Qwen models..." && \
+    wget -q --show-progress --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 3 \
     -O qwen_image_bf16.safetensors \
-    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_bf16.safetensors"
-
-# Download Lightning model (~5GB)
-RUN echo "Downloading Lightning model..." && \
-    wget --progress=bar:force:noscroll --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 5 \
+    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_bf16.safetensors" && \
+    echo "Base model downloaded" && \
+    wget -q --show-progress --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 3 \
     -O Qwen-Image-Lightning-8steps-V2.0.safetensors \
-    "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-8steps-V2.0.safetensors"
-
-# Download VAE (~2GB)
-RUN echo "Downloading VAE..." && \
-    wget --progress=bar:force:noscroll --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 5 \
+    "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-8steps-V2.0.safetensors" && \
+    echo "Lightning model downloaded" && \
+    wget -q --show-progress --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 3 \
     -O qwen_image_vae.safetensors \
-    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors"
-
-# Download text encoder (~15GB)
-RUN echo "Downloading text encoder..." && \
-    wget --progress=bar:force:noscroll --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 5 \
+    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors" && \
+    echo "VAE downloaded" && \
+    wget -q --show-progress --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 3 \
     -O qwen_2.5_vl_7b.safetensors \
-    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors"
+    "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors" && \
+    echo "All models downloaded successfully" && \
+    ls -lh /models/
 
 # Copy handler script
 WORKDIR /app
