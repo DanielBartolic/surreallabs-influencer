@@ -1,0 +1,29 @@
+Hello claude i have a quite big question and i will need your knowledge. I already own a website for ai image generation using the closed api model by bytedance, seedream4 and seedance1 pro. Its easy to use, you register for api get the key and pay and use it. BUt i wanna level up.  I want to use opensource model qwen-image, more precisely, i been using qwen image through comfyui on runpod using a very specific workflow that i created. Its not a very complex workflow actually, here is exactly what it uses:
+
+models:
+
+qwen_image_bf16.safetensors
+https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_bf16.safetensors
+Qwen-Image-Lightning-8steps-V2.0.safetensors
+https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-8steps-V2.0.safetensors
+
+qwen_image_vae.safetensors
+https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors
+
+qwen_2.5_vl_7b.safetensors
+https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors
+
+custom_character_lora (any user input safetensors file)
+
+and custom nodes:
+https://github.com/pythongosssss/ComfyUI-Custom-Scripts
+https://github.com/rgthree/rgthree-comfy
+https://github.com/Jonseed/ComfyUI-Detail-Daemon
+https://github.com/ClownsharkBatwing/RES4LYF
+https://github.com/digitaljohn/comfyui-propost
+https://github.com/gseth/ControlAltAI-Nodes
+https://github.com/ltdrdata/was-node-suite-comfyui
+https://github.com/ltdrdata/was-node-suite-comfyui
+https://github.com/M1kep/ComfyLiterals
+
+can I somehow recreate the whole function of this workflow (.json file) so i can run it serverless and get an api on to this serverless (im not sure how serverless works) but you know what my goal is? To have a website that can run this workflow through an api. what do you think?

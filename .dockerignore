@@ -1,0 +1,49 @@
+# Git files
+.git
+.gitignore
+.github
+
+# Documentation
+*.md
+!README.md
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+.venv
+venv
+env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+test_output.png
+*.test.py
+
+# Environment
+.env
+.env.local
+
+# Outputs
+outputs/
+tmp/
+*.png
+*.jpg
+*.jpeg

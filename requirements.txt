@@ -1,0 +1,30 @@
+# Python Requirements for Qwen-Image Serverless
+
+# Deep Learning
+torch==2.1.0
+torchvision
+torchaudio
+transformers==4.36.0
+diffusers==0.24.0
+accelerate==0.25.0
+xformers==0.0.22
+
+# Model handling
+safetensors==0.4.1
+einops
+omegaconf
+
+# Image processing
+pillow
+numpy
+opencv-python
+
+# Serverless platform
+runpod
+
+# HTTP and async
+requests
+aiohttp
+
+# Utilities
+python-dotenv
