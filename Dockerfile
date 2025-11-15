@@ -23,11 +23,11 @@ RUN apt-get update && apt-get install -y \
 # Clone ComfyUI
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git /app/ComfyUI
 
-# Install PyTorch with CUDA support
+# Install PyTorch with CUDA support (matching xformers requirements)
 RUN pip install --no-cache-dir \
-    torch==2.1.0 \
-    torchvision \
-    torchaudio \
+    torch==2.0.1 \
+    torchvision==0.15.2 \
+    torchaudio==2.0.2 \
     --index-url https://download.pytorch.org/whl/cu118
 
 # Copy requirements and install Python dependencies
